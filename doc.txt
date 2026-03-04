@@ -1,0 +1,51 @@
+GIAI ĐOẠN 1 – NỀN TẢNG WEB JAVA (BẮT BUỘC)
+
+Đây là xương sống
+
+1️⃣ Tomcat là gì – Servlet là gì (✅ bạn xong rồi)
+2️⃣ Request / Response hoạt động ra sao
+3️⃣ Servlet lifecycle (init – service – destroy)
+4️⃣ GET / POST – URL – Query param
+5️⃣ Session & Cookie
+
+👉 Sau giai đoạn này: hiểu web Java 80%
+
+GIAI ĐOẠN 2 – SERVLET THỰC CHIẾN (KHÔNG LÝ THUYẾT SUÔNG)
+
+6️⃣ Viết Servlet xử lý form login
+7️⃣ JSP hiển thị dữ liệu
+8️⃣ MVC trong Servlet (Model – View – Controller)
+9️⃣ JDBC kết nối database
+🔟 CRUD cơ bản
+
+👉 Sau giai đoạn này: làm được project Servlet thuần
+
+GIAI ĐOẠN 3 – CẦU NỐI SANG SPRING BOOT (QUAN TRỌNG)
+
+1️⃣1️⃣ Filter (login, phân quyền)
+1️⃣2️⃣ DispatcherServlet (linh hồn Spring MVC)
+1️⃣3️⃣ So sánh Servlet vs Spring MVC
+1️⃣4️⃣ Spring Boot auto-config làm gì thay bạn
+
+👉 Lúc này học Spring rất nhẹ
+
+GIAI ĐOẠN 4 – PROJECT THẬT (ÁP DỤNG)
+
+📌 Project gợi ý:
+
+User login
+
+Role ADMIN / USER
+
+CRUD sản phẩm
+
+REST API
+
+Session + Filter
+
+🧠 CÁCH MÌNH DẠY (CAM KẾT)
+
+✔ Giải thích vì sao tồn tại, không chỉ “cách dùng”
+✔ Dùng sơ đồ não + ví dụ đời thường
+✔ Không copy tutorial
+✔ Học tới đâu làm được tới đó

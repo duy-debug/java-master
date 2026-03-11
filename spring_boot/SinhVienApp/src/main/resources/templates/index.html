@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border = "1">
+    <thead>
+    <tr>
+        <th>MSSV</th>
+        <th>Tên sinh viên</th>
+        <th>Năm sinh</th>
+        <th>Giới tính</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sv:${sinhviens}">
+        <td th:text="${sv.getMssv()}"></td>
+        <td th:text="${sv.getName()}"></td>
+        <td th:text="${sv.getNamSinh()}"></td>
+        <td th:text="${sv.getGioiTinh()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

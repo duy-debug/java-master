@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <h2>Kết quả BMI</h2>
+
+    <p>Chiều cao: <span th:text="${height}"></span> cm</p>
+
+    <p>Cân nặng: <span th:text="${weight}"></span> kg</p>
+
+    <p>BMI: <span th:text="${result}"></span></p>
+
+    <p>Phân loại: <span th:text="${danhGia}"></span></p>
+</center>
+</body>
+</html>

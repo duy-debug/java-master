@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Th&ecirc;m b&agrave;i vi&#7871;t m&#7899;i</title>
+  <style>
+    :root { --bg:#ffffff; --panel:#ffffff; --text:#16324f; --muted:#667085; --line:#d9e2ec; --primary:#0f6cbd; --shadow:0 16px 36px rgba(15,43,77,.06); }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif; background:var(--bg); color:var(--text); }
+    .container { max-width:760px; margin:0 auto; padding:32px 20px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); padding:28px; }
+    h1 { margin:0 0 8px; font-size:28px; }
+    .subtitle { margin:0 0 24px; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .field { display:flex; flex-direction:column; gap:8px; }
+    .field.full { grid-column:1 / -1; }
+    label { font-size:14px; font-weight:600; }
+    input, textarea { width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:14px; font:inherit; color:var(--text); background:#fff; }
+    textarea { min-height:140px; resize:vertical; }
+    .actions { margin-top:24px; display:flex; gap:12px; flex-wrap:wrap; }
+    button, .btn { display:inline-flex; align-items:center; justify-content:center; padding:11px 18px; border-radius:12px; border:1px solid transparent; text-decoration:none; font-weight:600; font:inherit; cursor:pointer; }
+    button { background:var(--primary); color:#fff; }
+    .btn { background:#fff; color:var(--text); border-color:var(--line); }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h1>Th&ecirc;m b&agrave;i vi&#7871;t m&#7899;i</h1>
+    <p class="subtitle">Nh&#7853;p &#273;&#7847;y &#273;&#7911; th&ocirc;ng tin &#273;&#7875; t&#7841;o m&#7897;t post m&#7899;i.</p>
+    <form method="post" action="/post/new">
+      <div class="grid">
+        <div class="field"><label for="id">ID</label><input id="id" name="id" required></div>
+        <div class="field"><label for="categoryId">M&atilde; danh m&#7909;c</label><input id="categoryId" name="categoryId" required></div>
+        <div class="field full"><label for="title">Ti&ecirc;u &#273;&#7873;</label><input id="title" name="title" required></div>
+        <div class="field full"><label for="content">N&#7897;i dung</label><textarea id="content" name="content" placeholder="Nh&#7853;p n&#7897;i dung b&agrave;i vi&#7871;t..."></textarea></div>
+      </div>
+      <div class="actions"><button type="submit">L&#432;u b&agrave;i vi&#7871;t</button><a href="/post/all" class="btn">Quay l&#7841;i danh s&aacute;ch</a></div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

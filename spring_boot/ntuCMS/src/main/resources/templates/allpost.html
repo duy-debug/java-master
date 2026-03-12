@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh s&aacute;ch b&agrave;i vi&#7871;t</title>
+  <style>
+    :root { --bg:#ffffff; --panel:#ffffff; --text:#16324f; --muted:#667085; --line:#d9e2ec; --primary:#0f6cbd; --primary-soft:#e6f1fb; --danger:#d92d20; --danger-soft:#fdecec; --shadow:0 16px 36px rgba(15,43,77,.06); }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif; background:var(--bg); color:var(--text); }
+    .container { max-width:1100px; margin:0 auto; padding:32px 20px 48px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:24px; }
+    h1 { margin:0; font-size:30px; }
+    .subtitle { margin:6px 0 0; color:var(--muted); }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; border-radius:12px; text-decoration:none; font-weight:600; border:1px solid transparent; }
+    .btn-primary { background:var(--primary); color:#fff; }
+    .btn-secondary { background:#fff; color:var(--text); border-color:var(--line); }
+    .table-card { background:var(--panel); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); overflow:hidden; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { padding:16px 18px; text-align:left; border-bottom:1px solid #edf2f7; }
+    th { font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; background:#f8fbff; }
+    tr:last-child td { border-bottom:none; }
+    .row-actions { display:flex; gap:10px; flex-wrap:wrap; }
+    .btn-view { background:var(--primary-soft); color:var(--primary); border-color:#bfd8f0; }
+    .btn-delete { background:var(--danger-soft); color:var(--danger); border-color:#f5c2c7; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div>
+      <h1>Danh s&aacute;ch b&agrave;i vi&#7871;t</h1>
+      <p class="subtitle">Qu&#7843;n l&yacute; c&aacute;c post hi&#7879;n c&oacute; trong h&#7879; th&#7889;ng CMS.</p>
+    </div>
+    <div class="actions">
+      <a href="/" class="btn btn-secondary">V&#7873; dashboard</a>
+      <a href="/post/new" class="btn btn-primary">+ Th&ecirc;m b&agrave;i vi&#7871;t m&#7899;i</a>
+    </div>
+  </div>
+  <div class="table-card">
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ti&ecirc;u &#273;&#7873;</th>
+        <th>N&#7897;i dung</th>
+        <th>M&atilde; danh m&#7909;c</th>
+        <th>Thao t&aacute;c</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="p : ${dsBaiViet}">
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.title}"></td>
+        <td th:text="${p.content}"></td>
+        <td th:text="${p.categoryId}"></td>
+        <td><div class="row-actions"><a th:href="@{/post/view/{id}(id=${p.id})}" class="btn btn-view">Xem</a><a th:href="@{/post/delete/{id}(id=${p.id})}" class="btn btn-delete">X&oacute;a</a></div></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

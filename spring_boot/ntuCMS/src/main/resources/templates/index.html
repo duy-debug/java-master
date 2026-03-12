@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Profile</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #ffffff;
+      --panel-soft: #f8fafc;
+      --text: #16324f;
+      --muted: #667085;
+      --line: #d9e2ec;
+      --primary: #0f6cbd;
+      --primary-soft: #e6f1fb;
+      --shadow: 0 16px 36px rgba(15, 43, 77, 0.06);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+    }
+    .sidebar {
+      padding: 28px 20px;
+      background: #ffffff;
+      color: var(--text);
+      border-right: 1px solid var(--line);
+    }
+    .logo {
+      padding: 16px;
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .logo img {
+      width: 100%;
+      max-width: 170px;
+      height: auto;
+    }
+    .menu-title {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .menu-list {
+      display: grid;
+      gap: 10px;
+    }
+    .menu-item {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .main { padding: 28px; }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .page-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .page-subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .user-badge {
+      padding: 12px 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(15, 43, 77, 0.04);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .profile-card {
+      display: grid;
+      grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+      gap: 24px;
+      background: var(--panel);
+      border: 1px solid rgba(15, 43, 77, 0.08);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .profile-summary {
+      padding: 28px;
+      background: #ffffff;
+      border-right: 1px solid var(--line);
+    }
+    .avatar {
+      width: 92px;
+      height: 92px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--primary) 0%, #2c88d9 100%);
+      color: #fff;
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .profile-summary h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+    .headline {
+      margin: 10px 0 18px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .summary-text {
+      margin: 0 0 22px;
+      color: #486581;
+      line-height: 1.65;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid #c9def2;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .profile-details { padding: 28px; }
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 20px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .info-item {
+      padding: 18px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+    }
+    .info-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .info-value {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+    .skills-card {
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+      border: 1px solid var(--line);
+    }
+    .skills-title {
+      margin: 0 0 14px;
+      font-size: 16px;
+    }
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { padding-bottom: 20px; }
+      .profile-card { grid-template-columns: 1fr; }
+      .profile-summary {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+    @media (max-width: 640px) {
+      .main { padding: 18px; }
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .page-title { font-size: 24px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .profile-summary,
+      .profile-details { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="https://khoacntt.ntu.edu.vn/Portals/54/Logo-Khoa-CNTT-NTU.png?ver=w1WaDt4_a6t2zoyh_JwxVA%3d%3d" alt="Logo khoa CNTT NTU">
+      </div>
+      <p class="menu-title">Dashboard</p>
+      <div class="menu-list">
+        <a th:href="@{/page/all}" class="menu-item">Page - List</a>
+        <a th:href="@{/page/new}" class="menu-item">Page - Add New</a>
+        <a th:href="@{/post/all}" class="menu-item">Post - List</a>
+        <a th:href="@{/post/new}" class="menu-item">Post - Add New</a>
+      </div>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1 class="page-title">Th&ocirc;ng tin c&aacute; nh&acirc;n</h1>
+          <p class="page-subtitle">B&#7889; c&#7909;c &#273;&#432;&#7907;c t&#7889;i &#432;u l&#7841;i &#273;&#7875; th&ocirc;ng tin quan tr&#7885;ng d&#7877; qu&eacute;t v&agrave; d&#7877; &#273;&#7885;c h&#417;n.</p>
+        </div>
+        <div class="user-badge">Tr&#7847;n Mai Ng&#7885;c Duy</div>
+      </div>
+      <section class="profile-card">
+        <div class="profile-summary">
+          <div class="avatar">D</div>
+          <h2>Tr&#7847;n Mai Ng&#7885;c Duy</h2>
+          <p class="headline">Software Engineer / Java Backend Developer</p>
+          <p class="summary-text">Sinh vi&ecirc;n C&ocirc;ng ngh&#7879; th&ocirc;ng tin t&#7841;i &#272;&#7841;i h&#7885;c Nha Trang, t&#7853;p trung v&agrave;o ph&aacute;t tri&#7875;n backend Java v&agrave; x&acirc;y d&#7921;ng c&aacute;c h&#7879; th&#7889;ng web r&otilde; r&agrave;ng, &#7893;n &#273;&#7883;nh, d&#7877; m&#7903; r&#7897;ng.</p>
+          <div class="tag-list">
+            <span class="tag">Java</span>
+            <span class="tag">Spring Boot</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Frontend c&#417; b&#7843;n</span>
+          </div>
+        </div>
+        <div class="profile-details">
+          <h3 class="section-title">Chi ti&#7871;t h&#7891; s&#417;</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">H&#7885; v&agrave; t&ecirc;n</span>
+              <p class="info-value">Tr&#7847;n Mai Ng&#7885;c Duy</p>
+            </div>
+            <div class="info-item">
+              <span class="info-label">N&#259;m sinh</span>
+              <p class="info-value">2004</p>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Tr&#432;&#7901;ng</span>
+              <p class="info-value">&#272;&#7841;i h&#7885;c Nha Trang</p>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Ng&agrave;nh h&#7885;c</span>
+              <p class="info-value">C&ocirc;ng ngh&#7879; th&ocirc;ng tin</p>
+            </div>
+            <div class="info-item">
+              <span class="info-label">&#272;&#7883;nh h&#432;&#7899;ng</span>
+              <p class="info-value">Java Backend Developer</p>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Email</span>
+              <p class="info-value">duy@example.com</p>
+            </div>
+          </div>
+          <div class="skills-card">
+            <h4 class="skills-title">K&#7929; n&#259;ng l&#7853;p tr&igrave;nh</h4>
+            <div class="tag-list">
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+              <span class="tag">Java</span>
+              <span class="tag">C#</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">&copy;2025 by Tran Mai Ngoc Duy - FIT.NTU</footer>
+    </main>
+  </div>
+</body>
+</html>

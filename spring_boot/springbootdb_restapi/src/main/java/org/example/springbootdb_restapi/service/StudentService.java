@@ -14,18 +14,18 @@ public class StudentService {
     this.repository = repository;
   }
 
-  public List<Student> getAllStudents(){
+  public List<Student> findAll(){
     return repository.findAll();
   }
+
   public Student save(Student student){
     return repository.save(student);
   }
-  public Student update(Long id, Student student){
-    Student s = repository.findById(id).orElseThrow();
-    s.setName(student.getName());
-    s.setAge(student.getAge());
-    return repository.save(s);
+
+  public Student findById(Long id){
+    return repository.findById(id).orElseThrow();
   }
+
   public void delete(Long id){
     repository.deleteById(id);
   }
